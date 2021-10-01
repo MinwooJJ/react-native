@@ -6,21 +6,29 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import Header from './src/header';
+import Generator from './src/generator';
+import NumList from './src/numList';
 
 function App() {
+  const [random, setRandom] = useState([36, 999]);
+
+  const onAddRandomNum = () => {
+    alert('add random number');
+  };
+
   return (
     <View style={styles.mainView}>
-      <View style={styles.subView}>
-        <Text style={styles.mainText}>Hello World!</Text>
+      <Header name={'My First App'} />
+      <View>
+        <Text style={styles.mainText} onPress={() => alert('text touch event')}>
+          Hello World
+        </Text>
       </View>
-      <View style={styles.subView}>
-        <Text>Hello World!</Text>
-      </View>
-      <View style={styles.anotherSubView}>
-        <Text style={styles.mainText}>Hello World!</Text>
-      </View>
+      <Generator add={onAddRandomNum} />
+      <NumList num={random} />
     </View>
   );
 }
@@ -28,16 +36,13 @@ function App() {
 const styles = StyleSheet.create({
   mainView: {
     flex: 1,
-    backgroundColor: 'green',
+    backgroundColor: 'white',
     paddingTop: 50,
     alignItems: 'center',
-    justifyContent: 'center',
   },
   subView: {
-    flex: 1,
     backgroundColor: 'yellow',
     marginBottom: 10,
-    width: '50%',
   },
   anotherSubView: {
     flex: 2,
@@ -49,7 +54,7 @@ const styles = StyleSheet.create({
   },
   mainText: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: 'normal',
     color: 'red',
     padding: 20,
   },
