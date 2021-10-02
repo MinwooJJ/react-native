@@ -7,14 +7,17 @@
  */
 
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-function NumList({ num }) {
+function NumList({ num, onDelete }) {
   return num.map((item, index) => {
     return (
-      <View key={index} style={styles.numList}>
+      <TouchableOpacity
+        key={index}
+        onPress={onDelete(index)}
+        style={styles.numList}>
         <Text>{item}</Text>
-      </View>
+      </TouchableOpacity>
     );
   });
 }

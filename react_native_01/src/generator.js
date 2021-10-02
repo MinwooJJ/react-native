@@ -7,12 +7,12 @@
  */
 
 import React from 'react';
-import {View, Button, StyleSheet} from 'react-native';
+import { View, Button, StyleSheet } from 'react-native';
 
-function Generator({add}) {
+function Generator({ onAdd }) {
   return (
     <View style={styles.generator}>
-      <Button title="Add Number" onPress={add} />
+      <Button title="Add Number" onPress={onAdd} />
     </View>
   );
 }
