@@ -8,6 +8,7 @@
 
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import Input from './src/input';
 import Header from './src/header';
 import Generator from './src/generator';
 import NumList from './src/numList';
@@ -30,7 +31,7 @@ function App() {
 
   return (
     <View style={styles.mainView}>
-      <Header name={'My First App'} />
+      {/* <Header name={'My First App'} />
       <View>
         <Text style={styles.mainText} onPress={() => alert('text touch event')}>
           Hello World
@@ -45,7 +46,8 @@ function App() {
         // onContentSizeChange={(width, height) => alert(height)}>
         bounces={true}>
         <NumList num={random} onDelete={onDeleteNum} />
-      </ScrollView>
+      </ScrollView> */}
+      <Input />
     </View>
   );
 }
