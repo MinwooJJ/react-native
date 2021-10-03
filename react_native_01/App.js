@@ -7,47 +7,51 @@
  */
 
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import Input from './src/input';
-import Header from './src/header';
-import Generator from './src/generator';
-import NumList from './src/numList';
+import {
+  Button,
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TextInput,
+} from 'react-native';
+import Picker from './src/picker';
 
 function App() {
-  const [random, setRandom] = useState([]);
+  const [myTextInput, setMyTextInput] = useState('');
+  const [alphabet, setAlphabet] = useState([]);
 
-  const onAddRandomNum = () => {
-    const randomNum = Math.floor(Math.random() * 100) + 1;
-    setRandom(prev => [...prev, randomNum]);
+  const onChangeInput = event => {
+    setMyTextInput(event);
   };
-
-  const onDeleteNum = position => () => {
-    const newArray = random.filter((num, index) => {
-      return index !== position;
+  const onAddTextInput = () => {
+    setAlphabet(prev => {
+      return [...prev, myTextInput];
     });
-
-    setRandom(newArray);
+    setMyTextInput('');
   };
 
   return (
     <View style={styles.mainView}>
-      {/* <Header name={'My First App'} />
-      <View>
-        <Text style={styles.mainText} onPress={() => alert('text touch event')}>
-          Hello World
-        </Text>
-      </View>
-      <Generator onAdd={onAddRandomNum} />
-      <ScrollView
-        style={{ width: '100%' }}
-        // onMomentumScrollBegin={() => alert('begin')}>
-        // onMomentumScrollEnd={() => alert('end')}>
-        // onScroll={() => alert('scrolling')}>
-        // onContentSizeChange={(width, height) => alert(height)}>
-        bounces={true}>
-        <NumList num={random} onDelete={onDeleteNum} />
+      <Picker />
+      {/* <TextInput
+        value={myTextInput}
+        style={styles.input}
+        onChangeText={onChangeInput}
+        multiline={true}
+        maxLength={100}
+        autoCapitalize={'none'}
+      />
+      <Button title="Add Text Input" onPress={onAddTextInput} />
+      <ScrollView style={{ width: '100%' }}>
+        {alphabet.map((item, index) => {
+          return (
+            <Text style={styles.mainText} key={index}>
+              {item}
+            </Text>
+          );
+        })}
       </ScrollView> */}
-      <Input />
     </View>
   );
 }
@@ -76,6 +80,15 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     color: 'red',
     padding: 20,
+    margin: 20,
+    backgroundColor: 'pink',
+  },
+  input: {
+    width: '100%',
+    backgroundColor: '#cecece',
+    marginTop: 20,
+    fontSize: 25,
+    padding: 10,
   },
 });
 
