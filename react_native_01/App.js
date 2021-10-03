@@ -18,6 +18,7 @@ import {
 } from 'react-native';
 import Picker from './src/picker';
 import Web from './assets/images/web.png';
+import Modal from './src/modal';
 
 function App() {
   const [myTextInput, setMyTextInput] = useState('');
@@ -35,12 +36,7 @@ function App() {
 
   return (
     <View style={styles.mainView}>
-      <Image
-        source={{ uri: 'https://picsum.photos/200/300?grayscale' }}
-        style={styles.image}
-        resizeMode="contain"
-        onLoadEnd={() => alert('image loaded!')}
-      />
+      <Modal />
     </View>
   );
 }
