@@ -14,8 +14,10 @@ import {
   StyleSheet,
   ScrollView,
   TextInput,
+  Image,
 } from 'react-native';
 import Picker from './src/picker';
+import Web from './assets/images/web.png';
 
 function App() {
   const [myTextInput, setMyTextInput] = useState('');
@@ -33,25 +35,12 @@ function App() {
 
   return (
     <View style={styles.mainView}>
-      <Picker />
-      {/* <TextInput
-        value={myTextInput}
-        style={styles.input}
-        onChangeText={onChangeInput}
-        multiline={true}
-        maxLength={100}
-        autoCapitalize={'none'}
+      <Image
+        source={{ uri: 'https://picsum.photos/200/300?grayscale' }}
+        style={styles.image}
+        resizeMode="contain"
+        onLoadEnd={() => alert('image loaded!')}
       />
-      <Button title="Add Text Input" onPress={onAddTextInput} />
-      <ScrollView style={{ width: '100%' }}>
-        {alphabet.map((item, index) => {
-          return (
-            <Text style={styles.mainText} key={index}>
-              {item}
-            </Text>
-          );
-        })}
-      </ScrollView> */}
     </View>
   );
 }
@@ -89,6 +78,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
     fontSize: 25,
     padding: 10,
+  },
+  image: {
+    width: '100%',
+    height: 300,
   },
 });
 
