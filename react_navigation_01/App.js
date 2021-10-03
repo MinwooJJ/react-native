@@ -9,20 +9,42 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {View, Text, StyleSheet} from 'react-native';
+import {StyleSheet, Button} from 'react-native';
 import HomeScreen from './src/home';
 import UserScreen from './src/user';
+import LogoTitle from './src/logo';
 
 const Stack = createNativeStackNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#a4511e',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            color: 'blue',
+          },
+        }}>
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{title: 'Home Screen'}}
+          options={{
+            title: 'Home Screen',
+            headerTitle: props => <LogoTitle {...props} />,
+            headerRight: () => (
+              <Button
+                title="Info"
+                onPress={() => alert('button')}
+                color="orange"
+              />
+            ),
+          }}
         />
         <Stack.Screen
           name="User"

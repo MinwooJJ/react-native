@@ -4,6 +4,21 @@ import {View, Text, Button} from 'react-native';
 function UserScreen({navigation, route}) {
   const {userIdx, userName, userLastName} = route.params;
 
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      title: 'Customizing',
+      headerRight: () => (
+        <Button
+          title="Go Back"
+          onPress={() => {
+            navigation.navigate('Home');
+          }}
+          color="orange"
+        />
+      ),
+    });
+  }, [navigation]);
+
   return (
     <View
       style={{
